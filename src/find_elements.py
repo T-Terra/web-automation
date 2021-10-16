@@ -1,3 +1,4 @@
+import pyautogui
 from datetime import date
 from time import sleep
 from selenium.webdriver import Chrome
@@ -88,10 +89,14 @@ def except_days():
       print(f"\n{hours_}")
       sleep(3)
       driver.close()
+      sleep(1)
+      pyautogui.hotkey('ctrl', 'c')
     else:
       print("\nHorário não existe na lista!!!")
       sleep(3)
       driver.close()
+      sleep(1)
+      pyautogui.hotkey('ctrl', 'c')
   else:
     find_user()
     find_password()
@@ -106,10 +111,14 @@ def except_days():
       print(f"\n{hours_}")
       sleep(3)
       driver.close()
+      sleep(1)
+      pyautogui.hotkey('ctrl', 'c')
     else:
       print("\nHorário não existe na lista de sexta-feira!!!")
       sleep(3)
       driver.close()
+      sleep(1)
+      pyautogui.hotkey('ctrl', 'c')
     
 
 """
