@@ -24,7 +24,11 @@ def find_user():
   sleep(3)
   elem = driver.find_element_by_id("ext-element-38")
   sleep(1)
+<<<<<<< HEAD
   elem.send_keys(email)
+=======
+  elem.send_keys("*")
+>>>>>>> 682b41063aa64fb38ee404584172e83196284cb4
   elem.send_keys(Keys.RETURN)
   
 
@@ -33,7 +37,11 @@ def find_password():
   sleep(1)
   elem = driver.find_element_by_id("ext-element-51")
   sleep(1)
+<<<<<<< HEAD
   elem.send_keys(password)
+=======
+  elem.send_keys("******")
+>>>>>>> 682b41063aa64fb38ee404584172e83196284cb4
   elem.send_keys(Keys.RETURN)
   
 
