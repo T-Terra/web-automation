@@ -2,7 +2,7 @@ from cx_Freeze import setup, Executable
 
 # Dependencies are automatically detected, but it might need fine tuning.
 # "packages": ["os"] is used as example only
-build_exe_options = {"packages": ["os"], "includes": ["selenium", "src"], "include_files": ["chromedriver.exe"]}
+build_exe_options = {"packages": ["os", "dotenv"], "includes": ["selenium", "src"], "include_files": ["chromedriver.exe", "file_hours.txt", "file_hours_friday.txt", ".env"]}
 
 setup(
     name="Bot_Soccio",

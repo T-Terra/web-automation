@@ -1,3 +1,5 @@
+import os
+from dotenv import find_dotenv, load_dotenv
 from pyautogui import hotkey
 from datetime import date
 from time import sleep
@@ -6,7 +8,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
 
-hours_ = ["08:00", "12:00", "13:00", "18:00"]
+load_dotenv(find_dotenv())
+email = os.getenv("EMAIL")
+password = os.getenv("PASSWORD")
 Chrome_options = Options()
 Chrome_options.set_headless(headless=False)
 driver = Chrome(options=Chrome_options)
@@ -20,7 +24,7 @@ def find_user():
   sleep(3)
   elem = driver.find_element_by_id("ext-element-38")
   sleep(1)
-  elem.send_keys("9")
+  elem.send_keys(email)
   elem.send_keys(Keys.RETURN)
   
 
@@ -29,7 +33,7 @@ def find_password():
   sleep(1)
   elem = driver.find_element_by_id("ext-element-51")
   sleep(1)
-  elem.send_keys("123456")
+  elem.send_keys(password)
   elem.send_keys(Keys.RETURN)
   
 
@@ -73,9 +77,21 @@ def get_hours():
   elem = driver.find_element_by_id("ext-element-187").text
   hours_of_elem = elem.split(":")[0]
   minutes_of_elem = elem.split(":")[1]
-  return hours_of_elem + ":" + minutes_of_elem
+  return hours_of_elem + ":" + minutes_of_elem + "\n"
+
   
-  
+def read_file(day_of_week: int):
+  if day_of_week != 4:
+    with open("file_hours.txt", "r") as file:
+      read = file.readlines()
+      return read
+  else:
+    with open("file_hours_friday.txt", "r") as file:
+      print("Arquivo de horários de sexta-feira aberto!")
+      read = file.readlines()
+      return read
+
+
 def except_days():
   if weekday != 4:
     find_user()
@@ -83,10 +99,10 @@ def except_days():
     button_enter()
     register_click()
     click_map()
-    if get_hours() in hours_:
+    if get_hours() in read_file(weekday):
       click_register_operation()
       button_yes()
-      print(f"\n{hours_}")
+      print(f"\n Horário presente na lista!")
       sleep(3)
       driver.close()
       sleep(1)
@@ -103,12 +119,10 @@ def except_days():
     button_enter()
     register_click()
     click_map()
-    hours_.pop()
-    hours_.append("17:00")
-    if get_hours() in hours_:
+    if get_hours() in read_file(weekday):
       click_register_operation()
       button_yes()
-      print(f"\n{hours_}")
+      print(f"\n Horário presente na lista!")
       sleep(3)
       driver.close()
       sleep(1)
