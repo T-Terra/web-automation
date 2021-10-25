@@ -1,5 +1,5 @@
-import os
-from dotenv import find_dotenv, load_dotenv
+"""import os
+from dotenv import find_dotenv, load_dotenv"""
 from pyautogui import hotkey
 from datetime import date
 from time import sleep
@@ -8,9 +8,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
 
-load_dotenv(find_dotenv())
+"""load_dotenv(find_dotenv())
 email = os.getenv("EMAIL")
-password = os.getenv("PASSWORD")
+password = os.getenv("PASSWORD")"""
 Chrome_options = Options()
 Chrome_options.set_headless(headless=False)
 driver = Chrome(options=Chrome_options)
@@ -24,11 +24,7 @@ def find_user():
   sleep(3)
   elem = driver.find_element_by_id("ext-element-38")
   sleep(1)
-<<<<<<< HEAD
-  elem.send_keys(email)
-=======
-  elem.send_keys("*")
->>>>>>> 682b41063aa64fb38ee404584172e83196284cb4
+  elem.send_keys("9")
   elem.send_keys(Keys.RETURN)
   
 
@@ -37,11 +33,7 @@ def find_password():
   sleep(1)
   elem = driver.find_element_by_id("ext-element-51")
   sleep(1)
-<<<<<<< HEAD
-  elem.send_keys(password)
-=======
-  elem.send_keys("******")
->>>>>>> 682b41063aa64fb38ee404584172e83196284cb4
+  elem.send_keys("123456")
   elem.send_keys(Keys.RETURN)
   
 
