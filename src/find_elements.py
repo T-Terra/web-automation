@@ -24,7 +24,7 @@ def find_user():
   sleep(3)
   elem = driver.find_element_by_id("ext-element-38")
   sleep(1)
-  elem.send_keys("9")
+  elem.send_keys("")
   elem.send_keys(Keys.RETURN)
   
 
@@ -33,7 +33,7 @@ def find_password():
   sleep(1)
   elem = driver.find_element_by_id("ext-element-51")
   sleep(1)
-  elem.send_keys("123456")
+  elem.send_keys("")
   elem.send_keys(Keys.RETURN)
   
 
